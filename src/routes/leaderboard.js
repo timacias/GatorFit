@@ -38,6 +38,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// GET /api/leaderboard/:id/attribute/:attribute - Get a specific attribute of a leaderboard record.
+router.get("/:id/attribute/:attribute", async (req, res) => {
+  try {
+    const { id, attribute } = req.params;
+    const value = await leaderboardModel.getLeaderboardAttributeById(id, attribute);
+    if (value === null) {
+      return res.status(404).json({ error: "Leaderboard record or attribute not found." });
+    }
+    res.json({ [attribute]: value });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch leaderboard attribute." });
+  }
+});
+
 // UPDATE a leaderboard record
 router.patch("/:id", async (req, res) => {
   try {

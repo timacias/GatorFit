@@ -45,6 +45,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// GET /api/daily-routine/:id/attribute/:attribute - Get a specific attribute of a daily routine.
+router.get("/:id/attribute/:attribute", async (req, res) => {
+  try {
+    const { id, attribute } = req.params;
+    const value = await dailyRoutineModel.getDailyRoutineAttributeById(id, attribute);
+    if (value === null) {
+      return res.status(404).json({ error: "Daily routine or attribute not found." });
+    }
+    res.json({ [attribute]: value });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch daily routine attribute." });
+  }
+});
+
 // UPDATE a daily routine
 router.patch("/:id", async (req, res) => {
   try {

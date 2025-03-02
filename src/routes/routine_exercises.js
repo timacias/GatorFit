@@ -38,6 +38,21 @@ router.get("/routine/:daily_routine_id", async (req, res) => {
   }
 });
 
+// GET /api/routine-exercise/:id/attribute/:attribute - Get a specific attribute of a routine exercise.
+router.get("/:id/attribute/:attribute", async (req, res) => {
+  try {
+    const { id, attribute } = req.params;
+    const value = await routineExerciseModel.getRoutineExerciseAttributeById(id, attribute);
+    if (value === null) {
+      return res.status(404).json({ error: "Routine exercise or attribute not found." });
+    }
+    res.json({ [attribute]: value });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch routine exercise attribute." });
+  }
+});
+
 // UPDATE a routine exercise
 router.patch("/:id", async (req, res) => {
   try {

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const exerciseModel = require("../models/exerciseModel");
 
-// CREATE an exercise
+// CREATE a new exercise
 router.post("/", async (req, res) => {
   try {
     const newExercise = await exerciseModel.createExercise(req.body);
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// READ an exercise by ID
+// READ a single exercise by ID
 router.get("/:id", async (req, res) => {
   try {
     const exercise = await exerciseModel.getExerciseById(req.params.id);
@@ -61,4 +61,21 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// GET a specific attribute for an exercise by ID
+// GET /api/exercises/:id/attribute/:attribute
+router.get("/:id/attribute/:attribute", async (req, res) => {
+  try {
+    const { id, attribute } = req.params;
+    const value = await exerciseModel.getExerciseAttributeById(id, attribute);
+    if (value === null) {
+      return res.status(404).json({ error: "Exercise or attribute not found." });
+    }
+    res.json({ [attribute]: value });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch exercise attribute." });
+  }
+});
+
 module.exports = router;
+

@@ -37,6 +37,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// GET /api/users/:id/attribute/:attribute - Get a specific attribute of a user.
+router.get("/:id/attribute/:attribute", async (req, res) => {
+  try {
+    const { id, attribute } = req.params;
+    const value = await userModel.getUserAttributeById(id, attribute);
+    if (value === null) {
+      return res.status(404).json({ error: "User or attribute not found." });
+    }
+    res.json({ [attribute]: value });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch user attribute." });
+  }
+});
+
 // UPDATE a user
 router.patch("/:id", async (req, res) => {
   try {

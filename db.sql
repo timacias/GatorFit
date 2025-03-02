@@ -96,15 +96,26 @@ WHEN (
 EXECUTE FUNCTION new_day();
 -- Exercises table: stores publicly available exercise data.
 CREATE TABLE exercises (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  category VARCHAR(50),                  -- e.g., Cardio, Strength, Flexibility
-  duration INT,                          -- duration in minutes (if applicable)
-  calories_burned DECIMAL,               -- estimated calories burned
-  muscle_group VARCHAR(50),              -- e.g., chest, back, legs, arms, shoulders, etc.
-  difficulty VARCHAR(50),                -- e.g., Beginner, Intermediate, Advanced
-  description TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id SERIAL PRIMARY KEY,
+    exercise_name VARCHAR(150) NOT NULL,   -- Mapped from Exercise_Name
+    equipment TEXT,                          -- Equipment used
+    variation TEXT,                          -- Variation of the exercise
+    utility TEXT,                            -- Utility (e.g., training focus)
+    mechanics TEXT,                          -- Type of mechanics (e.g., compound, isolation)
+    force TEXT,                              -- Force type (e.g., push, pull)
+    preparation TEXT,                        -- Preparation details
+    execution TEXT,                          -- Execution instructions
+    target_muscles TEXT,                     -- Targeted muscles (could be a comma-separated list)
+    synergist_muscles TEXT,                  -- Synergist muscles
+    stabilizer_muscles TEXT,                 -- Stabilizer muscles
+    antagonist_muscles TEXT,                 -- Antagonist muscles
+    dynamic_stabilizer_muscles TEXT,         -- Dynamic stabilizer muscles
+    main_muscle TEXT,                        -- Main muscle worked
+    difficulty INT CHECK (difficulty BETWEEN 1 AND 5),  -- Difficulty on a scale of 1-5
+    secondary_muscles TEXT,                  -- Secondary muscles (optional)
+    parent_id INT,                           -- Self-referencing foreign key (optional)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (parent_id) REFERENCES exercises(id) ON DELETE SET NULL
 );
 
 -- Meals table: logs each meal with detailed nutritional info and optional recipe.

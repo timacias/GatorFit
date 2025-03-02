@@ -37,6 +37,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// GET /api/meals/:id/attribute/:attribute - Get a specific attribute of a meal.
+router.get("/:id/attribute/:attribute", async (req, res) => {
+  try {
+    const { id, attribute } = req.params;
+    const value = await mealModel.getMealAttributeById(id, attribute);
+    if (value === null) {
+      return res.status(404).json({ error: "Meal or attribute not found." });
+    }
+    res.json({ [attribute]: value });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch meal attribute." });
+  }
+});
+
 // UPDATE a meal
 router.patch("/:id", async (req, res) => {
   try {
