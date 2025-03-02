@@ -157,3 +157,30 @@ CREATE TABLE routine_exercises (
   is_replacement BOOLEAN DEFAULT false,  -- indicates if this exercise replaced an originally generated one
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+COPY exercises(
+    exercise_name,
+    equipment,
+    variation,
+    utility,
+    mechanics,
+    force,
+    preparation,
+    execution,
+    target_muscles,
+    synergist_muscles,
+    stabilizer_muscles,
+    antagonist_muscles,
+    dynamic_stabilizer_muscles,
+    main_muscle,
+    difficulty,
+    secondary_muscles,
+    parent_id
+)
+FROM './gym_exercise_dataset.csv'
+WITH (
+    FORMAT csv,
+    HEADER true,
+    DELIMITER ','
+);
