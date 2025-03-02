@@ -49,6 +49,9 @@ jobs:
       # uses: NiklasLehnfeld/flutter-android-build-action@cccda64e2121a75201ca0299974cf4611610e99b
         uses: NiklasLehnfeld/flutter-android-build-action@v2
         with:
+          # Build in the Flutter project directory
+          entryPoint: ./gatorfit_flutter
+        
           # If set to `true`, it will run release builds, otherwise debug builds
           release: false
           # apk | aab | both
