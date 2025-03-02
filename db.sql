@@ -54,21 +54,25 @@ WHEN (
 )
 EXECUTE FUNCTION update_caloric_goal();
 
-CREATE OR REPLACE FUNCTION check_birthday() 
+CREATE OR REPLACE FUNCTION new_day() 
 RETURNS TRIGGER AS $$
 BEGIN
+    daily_current_calories := 0;
+    current_protein := 0; 
+    current_carbs := 0;
+    current_fat := 0;
     NEW.age := date_part('year', age(NEW.current_date, OLD.birth_date));
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER check_birthday_trigger
+CREATE TRIGGER new_day_trigger
 BEFORE INSERT OR UPDATE ON users
 FOR EACH ROW
 WHEN (
   OLD.currentDate IS DISTINCT FROM NEW.currentDate
 )
-EXECUTE FUNCTION check_birthday();
+EXECUTE FUNCTION new_day();
 -- Exercises table: stores publicly available exercise data.
 CREATE TABLE exercises (
   id SERIAL PRIMARY KEY,
