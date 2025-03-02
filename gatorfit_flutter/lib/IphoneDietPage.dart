@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gatorfit_flutter/IphoneExercisePage.dart';
+import 'package:gatorfit_flutter/IphoneLeaderboardPage.dart';
 import 'package:gatorfit_flutter/main.dart';
 
 class IphoneDietPage extends StatefulWidget{
@@ -168,6 +169,13 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
               Positioned(
                 left: 203,
                 top: 768,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => IphoneLeaderboardPage()),
+                    );
+                  },
                 child: Container(
                   width: 61,
                   height: 99,
@@ -197,6 +205,7 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                     ],
                   ),
                 ),
+              ),
               ),
               Positioned(
                 left: 185,
@@ -302,7 +311,35 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                 top: 140,
                 child: Container(
                   width: 381,
+                  height: 221,
+                  decoration: ShapeDecoration(
+                    color: Color(0xE1ACD2BB),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 6,
+                top: 368,
+                child: Container(
+                  width: 381,
                   height: 237,
+                  decoration: ShapeDecoration(
+                    color: Color(0xE1ACD2BB),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 6,
+                top: 613,
+                child: Container(
+                  width: 381,
+                  height: 76,
                   decoration: ShapeDecoration(
                     color: Color(0xE1ACD2BB),
                     shape: RoundedRectangleBorder(
@@ -457,6 +494,276 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                   ),
                 ),
               ),
+              Positioned(
+                left: 27,
+                top: 488,
+                child: SizedBox(
+                  width: 144,
+                  height: 24,
+                  child: SizedBox(
+                    width: 144,
+                    height: 24,
+                    child: Text(
+                      'Carbs: 20g/40g',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 27,
+                top: 451,
+                child: SizedBox(
+                  width: 151,
+                  height: 30,
+                  child: SizedBox(
+                    width: 151,
+                    height: 30,
+                    child: Text(
+                      'Fats: 11g/30g',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 6,
+                top: 386,
+                child: SizedBox(
+                  width: 184,
+                  height: 47,
+                  child: SizedBox(
+                    width: 184,
+                    height: 47,
+                    child: Text(
+                      'Macronutrients\nTracker',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 220,
+                top: 158,
+                child: SizedBox(
+                  width: 157,
+                  height: 23,
+                  child: SizedBox(
+                    width: 157,
+                    height: 23,
+                    child: Text(
+                      'Calorie Tracker',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                )
+              ),
+              Positioned(
+                left: 227,
+                top: 293,
+                child: SizedBox(
+                  width: 157,
+                  height: 56,
+                  child: SizedBox(
+                    width: 157,
+                    height: 56,
+                    child: Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Recent Entry',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ':\nChicken Breast',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ),
+              Positioned(
+                left: 27,
+                top: 525,
+                child: SizedBox(
+                  width: 152,
+                  height: 24,
+                  child: SizedBox(
+                    width: 152,
+                    height: 24,
+                    child: Text(
+                      'Protein: 35g/120g',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 17,
+                top: 457,
+                child: Container(
+                  width: 6,
+                  height: 6,
+                  decoration: ShapeDecoration(
+                      color: Color(0xFFC1AE31),
+                      shape: OvalBorder(),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 17,
+                top: 494,
+                child: Container(
+                  width: 6,
+                  height: 6,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFC13131),
+                    shape: OvalBorder(),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 17,
+                top: 531,
+                child: Container(
+                  width: 6,
+                  height: 6,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFF3140C1),
+                    shape: OvalBorder(),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 17,
+                top: 629,
+                 child: SizedBox(
+                    width: 282,
+                    height: 25,
+                    child: SizedBox(
+                      width: 282,
+                      height: 25,
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Current Plan: ',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Muscle Growth',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+              ),
+              Positioned(
+                left: 298,
+                top: 634,
+                  child: Text(
+                    'Edit',
+                    style: TextStyle(
+                      color: Color(0xFF0008FF),
+                      fontSize: 15,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+              ),
+              Positioned(
+                left: 182,
+                top: 394,
+                child: SizedBox(
+                  width: 187,
+                  height: 187,
+                    child: CircularProgressIndicator(
+                      value: 0.3,
+                      strokeWidth: 18,
+                      backgroundColor:  Color(0xFF3140C1).withOpacity(0.5),
+                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF0008FF)),
+                    ),
+                ),
+              ),
+              Positioned(
+                left: 203,
+                top: 415,
+                child: SizedBox(
+                  width: 145,
+                  height: 145,
+                  child: CircularProgressIndicator(
+                    value: 0.45,
+                    strokeWidth: 18,
+                    backgroundColor:  Color(0xFFC1AE31).withOpacity(0.4),
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC1AE31)),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 226,
+                top: 438,
+                child: SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: CircularProgressIndicator(
+                    value: 0.3,
+                    strokeWidth: 18,
+                    backgroundColor:  Color(0xFFC13131).withOpacity(0.4),
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC13131)),
+                  ),
+                ),
+              )
             ],
           ),
         ),

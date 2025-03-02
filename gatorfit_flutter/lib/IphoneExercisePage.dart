@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gatorfit_flutter/IphoneLeaderboardPage.dart';
 import 'package:gatorfit_flutter/main.dart';
 import 'package:gatorfit_flutter/IphoneDietPage.dart';
 
@@ -171,6 +172,13 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
               Positioned(
                 left: 203,
                 top: 768,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => IphoneLeaderboardPage()),
+                    );
+                  },
                 child: Container(
                   width: 61,
                   height: 99,
@@ -200,6 +208,7 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                     ],
                   ),
                 ),
+              ),
               ),
               //Green Rectangle
               Positioned(
@@ -368,51 +377,106 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                 ),
               ),
               Positioned(
-                left: 44,
+                left: 29,
+                top: 152,
+                child: Text(
+                  'Most Recent',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w600,
+                ),
+                )
+              ),
+              Positioned(
+                  left: 29,
+                  top: 172,
+                  child: Text(
+                    'Cycling',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+              ),
+              Positioned(
+                  left: 29,
+                  top: 219,
+                  child: Text(
+                    'Calories Burned',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
+              ),
+              Positioned(
+                left: 52,
+                top: 248,
+                child: SizedBox(
+                width: 111,
+                height: 111,
+                child: CircularProgressIndicator(
+                  value: 0.7,
+                  strokeWidth: 18,
+                  backgroundColor:  Color(0xFFE6E6E6),
+                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFA2D1FF)),
+                ),
+              ),
+              ),
+              Positioned(
+                left: 248,
                 top: 150,
-                child: Container(
-                  width: 227,
-                  height: 125,
-                  decoration: BoxDecoration(color: Color(0xFFD9D9D9)),
-                ),
+                  child: Text(
+                    'Difficulty',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
               ),
               Positioned(
-                left: 123,
-                top: 355,
-                child: Container(
-                  width: 10,
-                  height: 10,
-                  decoration: ShapeDecoration(
-                    color: Colors.black,
-                    shape: OvalBorder(),
+                left: 250,
+                top: 170,
+                child: SizedBox(
+                  width: 79,
+                  height: 79,
+                  child: CircularProgressIndicator(
+                    value: 0.7,
+                    strokeWidth: 18,
+                    backgroundColor:  Color(0xFFE6E6E6),
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFA2D1FF)),
                   ),
                 ),
               ),
               Positioned(
-                left: 143,
-                top: 355,
-                child: Container(
-                  width: 10,
-                  height: 10,
-                  decoration: ShapeDecoration(
-                    color: Colors.black,
-                    shape: OvalBorder(),
-                  ),
-                ),
+                  left: 248,
+                  top: 259,
+                  child: Text(
+                    'Points Earned',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
               ),
               Positioned(
-                left: 163,
-                top: 355,
-                
-                child: Container(
-                  width: 10,
-                  height: 10,
-                  decoration: ShapeDecoration(
-                    color: Colors.black,
-                    shape: OvalBorder(),
-                  ),
-                ),
-              ),
+
+              )
             ],
           ),
         ),
