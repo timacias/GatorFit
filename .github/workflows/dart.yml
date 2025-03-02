@@ -36,7 +36,7 @@ jobs:
 
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
-        run: dart analyze
+        run: fluuter analyze
 
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
@@ -44,32 +44,10 @@ jobs:
       # - name: Run tests
       #   run: dart test
 
-      - name: flutter-android-build
-      # You may pin to the exact commit or the version.
-      # uses: NiklasLehnfeld/flutter-android-build-action@cccda64e2121a75201ca0299974cf4611610e99b
-        uses: ./.github/change-directory/
-        with:
-          working-directory: ./gatorfit_flutter
-          action: NiklasLehnfeld/flutter-android-build-action@v2
-          action-parameters: '{"release" : false, "build-type" : "both"}'
-          # If set to `true`, it will run release builds, otherwise debug builds
-          # release: false
-          # apk | aab | both
-          # build-type: both
-          # Base64 encoded keystore.jks, required if release is true
-          # keystore: # optional
-          # default is keystore password, required if release is true
-          # keystore-pwd: # optional, 
-          # default is key password, required if release is true
-          # key-pwd: # optional, default is 
+      - name: Flutter Android Build
+      - run: flutter build apk
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: ${{ steps.android-build.outputs.apk-path }}
-      - name: Archive AAB
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-aab
-          path: ${{ steps.android-build.outputs.aab-path }}
-                
+          path: build/app/outputs/apk/release/app-release.apk            
