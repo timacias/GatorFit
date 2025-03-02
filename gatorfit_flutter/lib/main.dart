@@ -520,6 +520,34 @@ class Iphone16HomePage extends StatelessWidget {
                 ),
               ),
               Positioned(
+                left: 19,
+                top: 414,
+                child: Text(
+                  '1. Firstplace Namington.............2357',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 24,
+                top: 492,
+                child: Text(
+                  '95.Your Name.................................350',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              Positioned(
                 left: 66,
                 top: 203,
                 child: Text(
@@ -532,6 +560,19 @@ class Iphone16HomePage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+              ),
+              Positioned(
+                left: 324,
+                top: 355, child: Container(
+                    width: 56,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/icons/colorTrophy.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )
               ),
               Positioned(
                 left: 325,

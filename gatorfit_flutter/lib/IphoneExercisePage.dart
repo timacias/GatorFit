@@ -226,6 +226,41 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                 ),
               ),
               Positioned(
+                  left: 6,
+                top: 626,
+                child: Container(
+                width: 230,
+                height: 74,
+                decoration: ShapeDecoration(
+                  color: Color(0xE1ACD2BB),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+              ),
+              ),
+              Positioned(
+                left: 17,
+                top: 650,
+                child: SizedBox(
+                width: 250,
+                height: 25,
+                child: SizedBox(
+                  width: 250 ,
+                  height: 25,
+                  child: Text(
+                    'Total Points; 1576 pts',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              ),
+              Positioned(
                 left: 185,
                 top: 818,
                 child: SizedBox(
@@ -304,6 +339,23 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                   ),
                 ),
               ),
+              ),
+              Positioned(
+                left: 302,
+                top: 642,
+                child: SizedBox(
+                  height: 42,
+                  width: 42,
+                  child: Container(
+                    height: 42,
+                    width: 42,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/icons/plusbutton.png"),
+                      )
+                    )
+                  )
+                )
               ),
               Positioned(
                 left: 77,
@@ -422,8 +474,8 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                 left: 52,
                 top: 248,
                 child: SizedBox(
-                width: 111,
-                height: 111,
+                width: 100,
+                height: 100,
                 child: CircularProgressIndicator(
                   value: 0.7,
                   strokeWidth: 18,
@@ -447,11 +499,11 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                   )
               ),
               Positioned(
-                left: 250,
+                left: 264,
                 top: 170,
                 child: SizedBox(
-                  width: 79,
-                  height: 79,
+                  width: 70,
+                  height: 70,
                   child: CircularProgressIndicator(
                     value: 0.7,
                     strokeWidth: 18,
@@ -475,7 +527,18 @@ class _IphoneExercisePageState extends State<IphoneExercisePage>{
                   )
               ),
               Positioned(
-
+                left: 264,
+                top: 275,
+                child: SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: CircularProgressIndicator(
+                    value: 0.7,
+                    strokeWidth: 18,
+                    backgroundColor:  Color(0xFFE6E6E6),
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFA2D1FF)),
+                  ),
+                ),
               )
             ],
           ),
