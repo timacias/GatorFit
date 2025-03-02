@@ -47,15 +47,15 @@ jobs:
       - name: flutter-android-build
       # You may pin to the exact commit or the version.
       # uses: NiklasLehnfeld/flutter-android-build-action@cccda64e2121a75201ca0299974cf4611610e99b
-        uses: NiklasLehnfeld/flutter-android-build-action@v2
+        uses: ./.github/actions/
         with:
-          # Build in the Flutter project directory
-          entryPoint: ./gatorfit_flutter
-        
+          working-directory: ./gatorfit_flutter
+          action: NiklasLehnfeld/flutter-android-build-action@v2
+          action-parameters: '{"release" : false, "build-type" : "both"}'
           # If set to `true`, it will run release builds, otherwise debug builds
-          release: false
+          # release: false
           # apk | aab | both
-          build-type: both
+          # build-type: both
           # Base64 encoded keystore.jks, required if release is true
           # keystore: # optional
           # default is keystore password, required if release is true
