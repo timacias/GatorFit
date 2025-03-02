@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gatorfit_flutter/IphoneExercisePage.dart';
 import 'package:gatorfit_flutter/main.dart';
 
 class IphoneDietPage extends StatefulWidget{
@@ -72,7 +73,7 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                         height: 30,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage("https://placehold.co/30x30"),
+                            image: AssetImage("assets/icons/diet.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -106,6 +107,13 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
               Positioned(
                 left: 97,
                 top: 768,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => IphoneExercisePage()),
+                    );
+                  },
                 child: Container(
                   height: 99,
                   padding: const EdgeInsets.only(
@@ -126,7 +134,7 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                         height: 40,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage("https://placehold.co/40x40"),
+                            image: AssetImage("assets/icons/exercise.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -134,6 +142,7 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                     ],
                   ),
                 ),
+              ),
               ),
               Positioned(
                 left: 96,
@@ -180,7 +189,7 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                         height: 30,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage("https://placehold.co/30x30"),
+                            image: AssetImage("assets/icons/leaderboard.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -261,8 +270,11 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                   width: 30,
                   height: 30,
                   clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: FlutterLogo(),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/icons/home.png"),
+                    ),
+                  ),
                 ),
               ),
               ),
@@ -286,7 +298,40 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                 ),
               ),
               Positioned(
+                left: 6,
+                top: 140,
+                child: Container(
+                  width: 381,
+                  height: 237,
+                  decoration: ShapeDecoration(
+                    color: Color(0xE1ACD2BB),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
                 left: 170,
+                top: 781,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 54,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 299,
                 top: 781,
                 child: Transform(
                   transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
