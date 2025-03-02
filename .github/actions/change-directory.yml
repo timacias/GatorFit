@@ -1,0 +1,17 @@
+name: 'Change Directory'
+description: 'Changes directory and calls another action'
+inputs:
+  working-directory:
+    description: 'The directory to change to'
+    required: true
+  action:
+    description: 'The action to call after changing directory'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Change directory
+      shell: bash
+      run: cd ${{ inputs.working-directory }}
+    - name: Call specified action
+      uses: ${{ inputs.action }}
