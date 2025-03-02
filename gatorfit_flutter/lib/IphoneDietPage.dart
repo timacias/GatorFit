@@ -468,7 +468,7 @@ class _IphoneDietPageState extends State<IphoneDietPage> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: user_bmr,
+                            text: '1440',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 32,
