@@ -11,20 +11,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gatorfit_flutter/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Button navigation smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const FigmaToCodeApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that we start on the diet page
+    expect(find.text('Calories'), true);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap the Home icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.home));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that we are now on the home page
+    expect(find.text('Today\'s Workout'), true);
   });
 }

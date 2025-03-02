@@ -1,0 +1,21 @@
+name: 'Change Directory'
+description: 'Changes directory and calls flutter-android-build'
+inputs:
+  working-directory:
+    description: 'The directory to change to'
+    required: true
+  action:
+    description: 'The action to call after changing directory'
+    required: true
+  action-parameters:
+    description: 'JSON string of parameters to pass to the called action'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Change directory
+      shell: bash
+      run: cd ${{ inputs.working-directory }}
+    - name: Call specified action
+      uses: ${{ inputs.action }}
+      with: ${{ fromJSON(inputs.action-parameters) }}
