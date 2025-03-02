@@ -35,6 +35,25 @@ const getMealById = async (id) => {
   return result.rows[0];
 };
 
+
+// Existing CRUD functions here...
+
+// Get a specific attribute from the meals table by meal ID.
+const getMealAttributeById = async (id, attribute) => {
+  const allowedAttributes = [
+    'id', 'user_id', 'food', 'recipe', 'calories',
+    'protein', 'carbs', 'fats', 'meal_time'
+  ];
+  if (!allowedAttributes.includes(attribute)) {
+    throw new Error("Invalid attribute requested.");
+  }
+  const query = `SELECT ${attribute} FROM meals WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0] ? result.rows[0][attribute] : null;
+};
+
+
+
 // ----- UPDATE -----
 const updateMeal = async (id, updates) => {
   const allowedFields = ['food', 'recipe', 'calories', 'protein', 'carbs', 'fats', 'meal_time'];
@@ -54,4 +73,4 @@ const deleteMeal = async (id) => {
   return result.rows[0];
 };
 
-module.exports = { createMeal, getMeals, getMealById, updateMeal, deleteMeal };
+module.exports = { createMeal, getMeals, getMealById, updateMeal, deleteMeal, getMealAttributeById };

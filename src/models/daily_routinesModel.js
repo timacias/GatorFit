@@ -32,6 +32,16 @@ const getDailyRoutineById = async (id) => {
   return result.rows[0];
 };
 
+const getDailyRoutineAttributeById = async (id, attribute) => {
+  const allowedAttributes = ['id', 'user_id', 'routine_date', 'created_at'];
+  if (!allowedAttributes.includes(attribute)) {
+    throw new Error("Invalid attribute requested.");
+  }
+  const query = `SELECT ${attribute} FROM daily_routines WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0] ? result.rows[0][attribute] : null;
+};
+
 // ----- UPDATE -----
 const updateDailyRoutine = async (id, updates) => {
   const allowedFields = ['routine_date'];
@@ -51,4 +61,4 @@ const deleteDailyRoutine = async (id) => {
   return result.rows[0];
 };
 
-module.exports = { createDailyRoutine, getDailyRoutine, getDailyRoutineById, updateDailyRoutine, deleteDailyRoutine };
+module.exports = { createDailyRoutine, getDailyRoutine, getDailyRoutineById, updateDailyRoutine, deleteDailyRoutine, getDailyRoutineAttributeById };

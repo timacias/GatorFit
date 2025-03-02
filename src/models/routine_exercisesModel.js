@@ -25,6 +25,16 @@ const getRoutineExercisesByRoutineId = async (dailyRoutineId) => {
   return result.rows;
 };
 
+const getRoutineExerciseAttributeById = async (id, attribute) => {
+  const allowedAttributes = ['id', 'daily_routine_id', 'exercise_id', 'exercise_order', 'is_replacement', 'created_at'];
+  if (!allowedAttributes.includes(attribute)) {
+    throw new Error("Invalid attribute requested.");
+  }
+  const query = `SELECT ${attribute} FROM routine_exercises WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0] ? result.rows[0][attribute] : null;
+};
+
 // ----- UPDATE -----
 const updateRoutineExercise = async (id, updates) => {
   const allowedFields = ['exercise_order', 'is_replacement'];
@@ -44,4 +54,4 @@ const deleteRoutineExercise = async (id) => {
   return result.rows[0];
 };
 
-module.exports = { addExerciseToRoutine, getRoutineExerciseById, getRoutineExercisesByRoutineId, updateRoutineExercise, deleteRoutineExercise };
+module.exports = { addExerciseToRoutine, getRoutineExerciseById, getRoutineExercisesByRoutineId, updateRoutineExercise, deleteRoutineExercise, getRoutineExerciseAttributeById };

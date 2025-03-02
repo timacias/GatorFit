@@ -36,6 +36,22 @@ const getUserById = async (id) => {
   return result.rows[0];
 };
 
+const getUserAttributeById = async (id, attribute) => {
+  const allowedAttributes = [
+    'id', 'username', 'email', 'fitness_goal', 'birthdate', 'age',
+    'weight', 'height', 'gender', 'daily_caloric_goal',
+    'target_protein', 'target_carbs', 'target_fat',
+    'daily_current_calories', 'current_protein', 'current_carbs', 'current_fat',
+    'points', 'created_at'
+  ];
+  if (!allowedAttributes.includes(attribute)) {
+    throw new Error("Invalid attribute requested.");
+  }
+  const query = `SELECT ${attribute} FROM users WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0] ? result.rows[0][attribute] : null;
+};
+
 // ----- UPDATE -----
 const updateUser = async (id, updates) => {
   // Define allowed fields to update.
@@ -56,4 +72,4 @@ const deleteUser = async (id) => {
   return result.rows[0];
 };
 
-module.exports = { createUser, getUsers, getUserById, updateUser, deleteUser };
+module.exports = { createUser, getUsers, getUserById, updateUser, deleteUser, getUserAttributeById };

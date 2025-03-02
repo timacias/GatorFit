@@ -35,6 +35,20 @@ const getExerciseById = async (id) => {
   return result.rows[0];
 };
 
+const getExerciseAttributeById = async (id, attribute) => {
+  const allowedAttributes = [
+    'id', 'name', 'category', 'duration', 'calories_burned',
+    'muscle_group', 'difficulty', 'description', 'created_at'
+  ];
+  if (!allowedAttributes.includes(attribute)) {
+    throw new Error("Invalid attribute requested.");
+  }
+  const query = `SELECT ${attribute} FROM exercises WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0] ? result.rows[0][attribute] : null;
+};
+
+
 // ----- UPDATE -----
 const updateExercise = async (id, updates) => {
   const allowedFields = ['name', 'category', 'duration', 'calories_burned', 'muscle_group', 'difficulty', 'description'];
@@ -54,4 +68,4 @@ const deleteExercise = async (id) => {
   return result.rows[0];
 };
 
-module.exports = { createExercise, getExercises, getExerciseById, updateExercise, deleteExercise };
+module.exports = { createExercise, getExercises, getExerciseById, updateExercise, deleteExercise, getExerciseAttributeById };

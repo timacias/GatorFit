@@ -25,6 +25,16 @@ const getLeaderboardById = async (id) => {
   return result.rows[0];
 };
 
+const getLeaderboardAttributeById = async (id, attribute) => {
+  const allowedAttributes = ['id', 'user_id', 'score'];
+  if (!allowedAttributes.includes(attribute)) {
+    throw new Error("Invalid attribute requested.");
+  }
+  const query = `SELECT ${attribute} FROM leaderboard WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0] ? result.rows[0][attribute] : null;
+};
+
 // ----- UPDATE -----
 const updateLeaderboard = async (id, newScore) => {
   const query = `UPDATE leaderboard SET score = $1 WHERE id = $2 RETURNING *`;
@@ -39,4 +49,4 @@ const deleteLeaderboard = async (id) => {
   return result.rows[0];
 };
 
-module.exports = { createLeaderboard, getLeaderboard, getLeaderboardById, updateLeaderboard, deleteLeaderboard };
+module.exports = { createLeaderboard, getLeaderboard, getLeaderboardById, updateLeaderboard, deleteLeaderboard, getLeaderboardAttributeById };

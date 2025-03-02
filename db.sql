@@ -27,15 +27,36 @@ CREATE OR REPLACE FUNCTION update_caloric_goal()
 RETURNS TRIGGER AS $$
 BEGIN
   IF NEW.gender = 'male' THEN
-    NEW.daily_caloric_goal := 66 + (13.7 * NEW.weight) + (5 * NEW.height) - (6.8 * NEW.age);
+    NEW.daily_caloric_goal := 66 + (6.2376 * NEW.weight) + (12.7 * NEW.height) - (6.8 * NEW.age);
   ELSE
-    NEW.daily_caloric_goal := 655 + (9.6 * NEW.weight) + (1.8 * NEW.height) - (4.7 * NEW.age);
+    NEW.daily_caloric_goal := 655 + (4.3379 * NEW.weight) + (4.69 * NEW.height) - (4.7 * NEW.age);
   END IF;
 
   IF NEW.fitness_goal = 'lose_weight' THEN
     NEW.daily_caloric_goal := NEW.daily_caloric_goal * 0.85;
-  ELSIF NEW.fitness_goal = 'gain_weight' OR 'gain_muscle' THEN
+
+  ELSE IF NEW.fitness_goal = 'gain_weight' OR 'gain_muscle' THEN
     NEW.daily_caloric_goal := NEW.daily_caloric_goal * 1.15;
+  END IF;
+
+  IF NEW.fitness_goal = 'gain_muscle' THEN
+    -- For muscle gain, calculate protein as 1.8 grams per kg of body weight.
+    weight_kg := NEW.weight * 0.453592;
+    NEW.target_protein := ROUND(weight_kg * 1.8);
+    
+    -- Calculate remaining calories after protein.
+    -- Calories from protein = target_protein * 4
+    remaining_calories := NEW.daily_caloric_goal - (NEW.target_protein * 4);
+    
+    -- Distribute remaining calories evenly (50% carbs, 50% fat).
+    NEW.target_carbs := ROUND((remaining_calories * 0.50) / 4);
+    NEW.target_fat   := ROUND((remaining_calories * 0.50) / 9);
+    
+  ELSE
+    -- For other goals, use a default distribution of 30% protein, 40% carbs, 30% fat.
+    NEW.target_protein := ROUND((NEW.daily_caloric_goal * 0.30) / 4);
+    NEW.target_carbs   := ROUND((NEW.daily_caloric_goal * 0.40) / 4);
+    NEW.target_fat     := ROUND((NEW.daily_caloric_goal * 0.30) / 9);
   END IF;
 
   RETURN NEW;
