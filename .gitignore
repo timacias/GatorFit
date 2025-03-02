@@ -132,3 +132,5 @@ dist
 # Nix development environment
 *.nix
 
+# Android studio related
+.idea/
