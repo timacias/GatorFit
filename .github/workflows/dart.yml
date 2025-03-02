@@ -60,12 +60,12 @@ jobs:
           # default is key password, required if release is true
           # key-pwd: # optional, default is 
       - name: Archive APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: ${{ steps.android-build.outputs.apk-path }}
       - name: Archive AAB
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release-aab
           path: ${{ steps.android-build.outputs.aab-path }}
